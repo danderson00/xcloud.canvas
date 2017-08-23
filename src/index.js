@@ -14,9 +14,11 @@ module.exports = function (words, options) {
   return { canvas, words: cloud }
 }
 
-function renderCloud(words, canvas) {
+function renderCloud(words, canvas, clear) {
   const context = canvas.getContext('2d')
   words.forEach(word => {
+    if(clear)
+      context.clearRect(word.left, word.top, word.width, word.height)
     context.font = `${word.size}px ${word.font}`
     context.fillStyle = colorToCSS(word.color)
     context.fillText(word.text, word.left, word.top)
