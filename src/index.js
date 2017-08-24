@@ -6,7 +6,7 @@ module.exports = function (words, options) {
   const cloud = xcloud(words, options)
   const canvas = options.canvas || createCanvas(options.width || xcloud.defaultOptions.width, options.height || xcloud.defaultOptions.height)
 
-  renderCloud(cloud, canvas)
+  renderCloud(cloud, canvas, options.clear)
 
   if(options.target)
     options.target.appendChild(canvas)
