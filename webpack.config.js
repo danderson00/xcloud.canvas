@@ -1,7 +1,7 @@
 var fs = require('fs')
 
 module.exports = {
-  entry: './sample/animated/full.js',
+  entry: './sample/animated/index.js',
   output: {
     path: __dirname + '/sample/animated',
     filename: 'build.js',
