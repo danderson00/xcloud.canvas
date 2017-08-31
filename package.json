@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danderson00/xcloud.canvas.git"
+    "url": "git+https://github.com/danderson00/xtagcloud.canvas.git"
   },
   "keywords": [],
   "author": "danderson00",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/danderson00/xcloud.canvas/issues"
+    "url": "https://github.com/danderson00/xtagcloud.canvas/issues"
   },
-  "homepage": "https://github.com/danderson00/xcloud.canvas#readme",
+  "homepage": "https://github.com/danderson00/xtagcloud.canvas#readme",
   "dependencies": {
     "xtagcloud": "^0.0.1"
   },
