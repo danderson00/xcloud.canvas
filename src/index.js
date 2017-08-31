@@ -1,5 +1,5 @@
 const measureText = require('./measureText')
-const xcloud = require('xcloud')
+const xcloud = require('xtagcloud')
 
 module.exports = function (words, options) {
   options = Object.assign({}, { measureText: measureText }, options)
@@ -16,7 +16,7 @@ module.exports = function (words, options) {
 
 function renderCloud(words, canvas, clear) {
   const context = canvas.getContext('2d')
-  words.forEach(word => {
+  words.forEach(function(word) {
     if(clear)
       context.clearRect(word.left, word.top, word.width, word.height)
     context.font = `${word.size}px ${word.font}`
