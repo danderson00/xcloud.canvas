@@ -1,10 +1,10 @@
-const measureText = require('./measureText')
-const xcloud = require('xtagcloud')
+var measureText = require('./measureText')
+var xcloud = require('xtagcloud')
 
 module.exports = function (words, options) {
   options = Object.assign({}, { measureText: measureText }, options)
-  const cloud = xcloud(words, options)
-  const canvas = options.canvas || createCanvas(options.width || xcloud.defaultOptions.width, options.height || xcloud.defaultOptions.height)
+  var cloud = xcloud(words, options)
+  var canvas = options.canvas || createCanvas(options.width || xcloud.defaultOptions.width, options.height || xcloud.defaultOptions.height)
 
   renderCloud(cloud, canvas, options.clear)
 
@@ -15,7 +15,7 @@ module.exports = function (words, options) {
 }
 
 function renderCloud(words, canvas, clear) {
-  const context = canvas.getContext('2d')
+  var context = canvas.getContext('2d')
   words.forEach(function(word) {
     if(clear)
       context.clearRect(word.left, word.top, word.width, word.height)
