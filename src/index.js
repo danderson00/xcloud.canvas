@@ -14,11 +14,34 @@ module.exports = function (words, options) {
   return { canvas, words: cloud }
 }
 
+module.exports.animate = function (wordArray, options) {
+  var previous
+  var canvas = options.canvas || createCanvas(options.width || xcloud.defaultOptions.width, options.height || xcloud.defaultOptions.height)
+  
+  options = Object.assign({}, { delay: 30 }, options)
+  
+  next(0)
+
+  function next(index) {
+    var words = wordArray[index]
+    
+    if(index < wordArray.length) {
+      if(words.length > 0) {
+        setTimeout(() => {
+          previous = module.exports(words, { canvas, padding: index === 0 ? 5 : 0, previous }).words
+          next(index + 1)
+        }, options.delay)
+      } else {
+        next(index + 1)        
+      }
+    }
+  }  
+}
+
 function renderCloud(words, canvas, clear) {
   var context = canvas.getContext('2d')
+  context.clearRect(0, 0, canvas.width, canvas.height)      
   words.forEach(function(word) {
-    if(clear)
-      context.clearRect(word.left, word.top, word.width, word.height)
     context.font = `${word.size}px ${word.font}`
     context.fillStyle = colorToCSS(word.color)
     context.fillText(word.text, word.left, word.top)

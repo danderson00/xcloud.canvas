@@ -13,10 +13,6 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      // include: [
-      //   fs.realpathSync(__dirname + '/src'),
-      //   fs.realpathSync(__dirname + '/../xcloud')
-      // ],
       loader: 'babel-loader'
     }]
   }

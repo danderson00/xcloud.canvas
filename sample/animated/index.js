@@ -26,17 +26,6 @@ const words = [
 ]
 
 window.onload = function () {
-  const target = document.getElementById('target')
-  let previous = xcloud(words[0], { target, padding: 5 }).words
-
-  setTimeout(() => {
-    target.childNodes[0].remove()
-    previous = xcloud(words[1], { target, previous }).words
-
-    setTimeout(() => {
-      target.childNodes[0].remove()
-      xcloud(words[2], { target, previous })
-    }, 500)
-  }, 500)
+  xcloud.animate(words, { canvas: document.getElementById('target'), delay: 100 })  
 }
 
