@@ -1,10 +1,13 @@
 var fs = require('fs')
 
 module.exports = {
-  entry: './sample/animated/index.js',
+  entry: {
+    static: './sample/static/index.js',
+    animated: './sample/animated/index.js'
+  },
   output: {
-    path: __dirname + '/sample/animated',
-    filename: 'build.js',
+    path: __dirname + '/sample/build',
+    filename: '[name].js',
   },
 
   resolve: {

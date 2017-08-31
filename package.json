@@ -1,6 +1,6 @@
 {
   "name": "xtagcloud.canvas",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "This library contains a HTML canvas implementation for xcloud.",
   "main": "src/index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/danderson00/xtagcloud.canvas#readme",
   "dependencies": {
-    "xtagcloud": "^0.0.4"
+    "xtagcloud": "^0.0.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
