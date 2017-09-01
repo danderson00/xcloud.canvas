@@ -14,8 +14,8 @@ module.exports = function (words, options) {
   if(options.target)
     options.target.appendChild(canvas)
 
-  if(options.onRendered)
-    options.onRendered({ canvas, words: cloud })
+  if(options.onFrameRendered)
+    options.onFrameRendered({ canvas, words: cloud })
 
   return { canvas, words: cloud }
 }
@@ -41,6 +41,9 @@ module.exports.animate = function (wordArray, options) {
       } else {
         next(index + 1)        
       }
+    } else {
+      if(options.onAnimationComplete)
+        options.onAnimationComplete({ canvas })
     }
   }  
 }
