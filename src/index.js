@@ -14,6 +14,9 @@ module.exports = function (words, options) {
   if(options.target)
     options.target.appendChild(canvas)
 
+  if(options.onRendered)
+    options.onRendered({ canvas, words: cloud })
+
   return { canvas, words: cloud }
 }
 
