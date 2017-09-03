@@ -6,10 +6,14 @@ module.exports = function (words, options) {
   var height = options.height || xcloud.defaultOptions.height
   var canvas = options.canvas || createCanvas(width, height)
   var context = canvas.getContext('2d')  
-  options = Object.assign({}, { measureText: measureText }, canvasDimensions(canvas, width, height), options)
+  options = Object.assign({}, 
+    { measureText: measureText, background: '#FFFFFF' }, 
+    canvasDimensions(canvas, width, height), 
+    options
+  )
 
   var cloud = xcloud(words, options)
-  renderCloud(cloud, canvas, context)
+  renderCloud(cloud, options.background, canvas, context)
 
   if(options.target)
     options.target.appendChild(canvas)
@@ -48,8 +52,9 @@ module.exports.animate = function (wordArray, options) {
   }  
 }
 
-function renderCloud(words, canvas, context) {
-  context.clearRect(0, 0, canvas.width, canvas.height)      
+function renderCloud(words, background, canvas, context) {
+  context.fillStyle = background
+  context.fillRect(0, 0, canvas.width, canvas.height)      
   words.forEach(function(word) {
     context.font = `${word.size}px ${word.font}`
     context.fillStyle = colorToCSS(word.color)
