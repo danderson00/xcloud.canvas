@@ -35,7 +35,7 @@ module.exports.animate = function (wordArray, options) {
     if(index < wordArray.length) {
       if(words.length > 0) {
         setTimeout(function() {
-          previous = module.exports(words, { canvas, padding: index === 0 ? 5 : 0, previous }).words
+          previous = module.exports(words, Object.assign({ canvas, padding: index === 0 ? 5 : 0, previous }, options)).words
           next(index + 1)
         }, options.delay)
       } else {
