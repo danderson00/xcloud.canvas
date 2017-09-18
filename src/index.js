@@ -31,14 +31,34 @@ module.exports.animate = function (wordArray, options) {
   var canvas = options.canvas || createCanvas(width, height)
   options = Object.assign({}, { delay: 30 }, canvasDimensions(canvas, width, height), options)
 
-  next(0)
+  var currentFrame = 0
+  var animating = true
+  var timeout
+
+  next(currentFrame)
+
+  return {
+    canvas,
+    play: () => {
+      clearTimeout(timeout)
+      next(currentFrame)
+    },
+    pause: () => {
+      clearTimeout(timeout)
+    },
+    replay: () => {
+      clearTimeout(timeout)
+      currentFrame = 0
+      next(currentFrame)
+    }
+  }
 
   function next(index) {
     var words = wordArray[index]
     
     if(index < wordArray.length) {
       if(words.length > 0) {
-        setTimeout(function() {
+        timeout = setTimeout(function() {
           previous = module.exports(words, Object.assign({ canvas, padding: index === 0 ? 5 : 0, previous }, options)).words
           next(index + 1)
         }, options.delay)
