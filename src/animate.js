@@ -42,6 +42,7 @@ module.exports = function (render, createCanvas, canvasDimensions) {
       if(index < wordArray.length) {
         if(words.length > 0) {
           timeout = setTimeout(function() {
+            currentFrame = index
             previous = render(words, Object.assign({ canvas, padding: index === 0 ? 5 : 0, previous }, options)).words
             next(index + 1)
           }, options.delay)
