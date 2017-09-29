@@ -49,8 +49,10 @@ module.exports = function (render, createCanvas, canvasDimensions) {
           next(index + 1)        
         }
       } else {
-        if(options.onAnimationComplete)
+        api.status = 'complete'
+        if(options.onAnimationComplete) {
           options.onAnimationComplete({ canvas })
+        }
       }
     }  
   }

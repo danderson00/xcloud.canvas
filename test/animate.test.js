@@ -38,6 +38,10 @@ describe('xtagcloud.canvas.animate', () => {
       .then(() => {
         expect(cloud.status).to.equal('playing')        
         expect(cloud.canvas.toDataURL()).to.not.equal(image)
+        return delay(50)
+      })
+      .then(() => {
+        expect(cloud.status).to.equal('complete')        
       })
   })
 })
