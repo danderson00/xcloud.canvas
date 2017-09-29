@@ -26,6 +26,6 @@ const words = [
 ]
 
 window.onload = function () {
-  xcloud.animate(words, { canvas: document.getElementById('target'), delay: 100 })  
+  xcloud.animate(words, { canvas: document.getElementById('target'), delay: 100 }).play()
 }
 

@@ -13,13 +13,13 @@ describe('xtagcloud.canvas.animate', () => {
   // for basic testing, just validate the image has changed
 
   it('animates frame', () => {
-    const cloud = xtagcloud.animate(data, { target: document.getElementsByTagName('body')[0], delay: 0 })
+    const cloud = xtagcloud.animate(data, { target: document.getElementsByTagName('body')[0], delay: 0 }).play()
     const initialData = cloud.canvas.toDataURL()
     return delay().then(() => expect(cloud.canvas.toDataURL()).to.not.equal(initialData))
   })
 
   it('can be paused and resumed', () => {
-    const cloud = xtagcloud.animate(data, { target: document.getElementsByTagName('body')[0], delay: 10 })
+    const cloud = xtagcloud.animate(data, { target: document.getElementsByTagName('body')[0], delay: 10 }).play()
     let image
 
     return delay()

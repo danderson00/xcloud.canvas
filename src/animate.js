@@ -12,8 +12,6 @@ module.exports = function (render, createCanvas, canvasDimensions) {
     var animating = true
     var timeout
 
-    next(currentFrame)
-
     var api = {
       canvas,
       status: 'playing',
@@ -21,16 +19,19 @@ module.exports = function (render, createCanvas, canvasDimensions) {
         clearTimeout(timeout)
         api.status = 'playing'
         next(currentFrame)
+        return api
       },
       pause: function() {
         api.status = 'paused'
         clearTimeout(timeout)
+        return api
       },
       replay: function() {
         clearTimeout(timeout)
         currentFrame = 0
         api.status = 'playing'
         next(currentFrame)
+        return api
       }
     }
 
