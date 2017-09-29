@@ -1,6 +1,6 @@
 {
   "name": "xtagcloud.canvas",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "This library contains an HTML canvas implementation for xcloud.",
   "main": "src/index.js",
   "scripts": {
