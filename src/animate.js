@@ -14,21 +14,27 @@ module.exports = function (render, createCanvas, canvasDimensions) {
 
     next(currentFrame)
 
-    return {
+    var api = {
       canvas,
-      play: () => {
+      status: 'playing',
+      play: function() {
         clearTimeout(timeout)
+        api.status = 'playing'
         next(currentFrame)
       },
-      pause: () => {
+      pause: function() {
+        api.status = 'paused'
         clearTimeout(timeout)
       },
-      replay: () => {
+      replay: function() {
         clearTimeout(timeout)
         currentFrame = 0
+        api.status = 'playing'
         next(currentFrame)
       }
     }
+
+    return api
 
     function next(index) {
       var words = wordArray[index]

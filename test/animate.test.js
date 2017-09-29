@@ -15,26 +15,29 @@ describe('xtagcloud.canvas.animate', () => {
   it('animates frame', () => {
     const cloud = xtagcloud.animate(data, { target: document.getElementsByTagName('body')[0], delay: 0 })
     const initialData = cloud.canvas.toDataURL()
-    cloud.play()
     return delay().then(() => expect(cloud.canvas.toDataURL()).to.not.equal(initialData))
   })
 
   it('can be paused and resumed', () => {
     const cloud = xtagcloud.animate(data, { target: document.getElementsByTagName('body')[0], delay: 10 })
     let image
-    cloud.play()
 
     return delay()
       .then(() => {
+        expect(cloud.status).to.equal('playing')
         cloud.pause()
         image = cloud.canvas.toDataURL()
         return delay(10)
       })
       .then(() => {
+        expect(cloud.status).to.equal('paused')
         expect(cloud.canvas.toDataURL()).to.equal(image)
         cloud.play()
         return delay(10)
       })
-      .then(() => expect(cloud.canvas.toDataURL()).to.not.equal(image))
+      .then(() => {
+        expect(cloud.status).to.equal('playing')        
+        expect(cloud.canvas.toDataURL()).to.not.equal(image)
+      })
   })
 })
