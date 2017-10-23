@@ -13,7 +13,7 @@ module.exports = function (render, createCanvas, canvasDimensions) {
     var timeout
 
     var api = {
-      canvas,
+      canvas: canvas,
       status: 'playing',
       play: function() {
         clearTimeout(timeout)
@@ -44,7 +44,7 @@ module.exports = function (render, createCanvas, canvasDimensions) {
         if(words.length > 0) {
           timeout = setTimeout(function() {
             currentFrame = index
-            previous = render(words, Object.assign({ canvas, padding: index === 0 ? 5 : 0, previous }, options)).words
+            previous = render(words, Object.assign({ canvas: canvas, padding: index === 0 ? 5 : 0, previous: previous }, options)).words
             next(index + 1)
           }, options.delay)
         } else {
@@ -54,7 +54,7 @@ module.exports = function (render, createCanvas, canvasDimensions) {
         currentFrame = 0
         api.status = 'complete'
         if(options.onAnimationComplete) {
-          options.onAnimationComplete({ canvas })
+          options.onAnimationComplete({ canvas: canvas })
         }
       }
     }  

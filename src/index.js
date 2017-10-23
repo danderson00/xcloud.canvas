@@ -20,9 +20,9 @@ module.exports = function (words, options) {
     options.target.appendChild(canvas)
 
   if(options.onFrameRendered)
-    options.onFrameRendered({ canvas, words: cloud })
+    options.onFrameRendered({ canvas: canvas, words: cloud })
 
-  return { canvas, words: cloud }
+  return { canvas: canvas, words: cloud }
 }
 
 module.exports.animate = animate(module.exports, createCanvas, canvasDimensions)
@@ -31,7 +31,7 @@ function renderCloud(words, background, canvas, context) {
   context.fillStyle = background
   context.fillRect(0, 0, canvas.width, canvas.height)      
   words.forEach(function(word) {
-    context.font = `${word.size}px ${word.font}`
+    context.font = word.size + 'px ' + word.font
     context.fillStyle = colorToCSS(word.color)
     context.fillText(word.text, word.left, word.top)
   })
@@ -55,5 +55,5 @@ function canvasDimensions(canvas, defaultWidth, defaultHeight) {
 }
 
 function colorToCSS(color) {
-  return `rgb(${color.r}, ${color.g}, ${color.b})`  
+  return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')'  
 }
